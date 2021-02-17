@@ -1,0 +1,33 @@
+﻿<!--
+Preston Loveland
+Assignment 5
+Section 1 Group 11-->
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model IQueryable<Book>
+<!--index page-->
+<body class="bg-dark text-light">
+
+    <img style="width:500px; margin-left:auto; margin-right:auto; display:block;" src="~/amazon.png" />
+
+    <div class="text-center font-weight-bolder">
+        <h1 class="display-4">Welcome to Amazon!</h1>
+        <p>Where we have all the books you can imagine. From A to Z.</p>
+
+    </div>
+    <br /><br />
+    @foreach (var i in Model)
+    {
+        <div>
+            <h4 class="font-weight-bold">@i.Title</h4>
+            <p>Author: @i.Author</p>
+            <p>Publisher: @i.Publisher</p>
+            <p>Category: @i.Category</p>
+            <p>Book ISBN: @i.ISBN</p>
+            <p>Price: <span style="color:red">@i.Price</span></p>
+            <br />
+        </div>
+    }
+
+</body>
