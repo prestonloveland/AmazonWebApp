@@ -19,15 +19,16 @@ Section 1 Group 11-->
     <br /><br />
     @foreach (var i in Model)
     {
-        <div>
-            <h4 class="font-weight-bold">@i.Title</h4>
-            <p>Author: @i.Author</p>
-            <p>Publisher: @i.Publisher</p>
-            <p>Category: @i.Category</p>
-            <p>Book ISBN: @i.ISBN</p>
-            <p>Price: <span style="color:red">@i.Price</span></p>
-            <br />
-        </div>
+<div>
+    <h4 class="font-weight-bold">@i.Title</h4>
+    <p>Author: @i.AuthorFirstName @i.AuthorLastName</p>
+    <p>Publisher: @i.Publisher</p>
+    <p>Classification: @i.Classification</p>
+    <p>Category: @i.Category</p>
+    <p>Book ISBN: @i.ISBN</p>
+    <p>Price: <span style="color:red">@i.Price</span></p>
+    <br />
+</div>
     }
 
 </body>
