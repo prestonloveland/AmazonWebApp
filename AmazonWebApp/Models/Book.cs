@@ -42,5 +42,8 @@ namespace AmazonWebApp.Models
         [Required]
         public double Price { get; set; }
 
+        [Required]
+        public int PageNumber { get; set; }
+
     }
 }

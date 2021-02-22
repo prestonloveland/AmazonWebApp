@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AmazonWebApp.Models.ViewModels;
 
 namespace AmazonWebApp.Controllers
 {
@@ -18,6 +19,9 @@ namespace AmazonWebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IAmazonRepository _repository;
+
+        public int PageSize = 5;
+
 
         //sets the private repository to the variable that was passed
         public HomeController(ILogger<HomeController> logger, IAmazonRepository repository)
@@ -27,9 +31,23 @@ namespace AmazonWebApp.Controllers
         }
 
         //returns view with the repository loaded with seeded books
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View(_repository.Books);
+            //allows the page to show only a certain number of entries
+            return View(new BookListViewModel
+            {
+                Books = _repository.Books
+                .OrderBy(b => b.BookId)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                ,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = _repository.Books.Count()
+                }
+            });
         }
 
         public IActionResult Privacy()

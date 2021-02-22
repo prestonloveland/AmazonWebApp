@@ -19,7 +19,8 @@ namespace AmazonWebApp.Migrations
                     ISBN = table.Column<string>(nullable: false),
                     Category = table.Column<string>(nullable: false),
                     Classification = table.Column<string>(nullable: false),
-                    Price = table.Column<double>(nullable: false)
+                    Price = table.Column<double>(nullable: false),
+                    PageNumber = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
