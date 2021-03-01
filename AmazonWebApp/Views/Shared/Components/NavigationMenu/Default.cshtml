@@ -1,0 +1,21 @@
+﻿<!--
+Preston Loveland
+Assignment 7
+Section 1 Group 11-->
+
+<!--Page to display shared category menu throughout the project-->
+@model IEnumerable<string>
+
+<a class="btn btn-block btn-outline-secondary text-light" asp-action="Index" asp-controller="Home"
+    asp-route-category="">
+    Home
+</a>
+
+@foreach (string category in Model)
+{
+    <a class="btn btn-block text-light @(category == ViewBag.SelectedType ? "btn-primary" : "btn-outline-secondary")"
+        asp-action="Index" asp-controller="Home"
+        asp-route-category="@category" asp-route-page="1">
+        @category
+    </a>
+}

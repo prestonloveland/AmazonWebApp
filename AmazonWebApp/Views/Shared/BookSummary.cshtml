@@ -1,0 +1,17 @@
+﻿<!--
+Preston Loveland
+Assignment 5
+Section 1 Group 11-->
+@model Book
+
+<!--Takes the printing of the book out of the index t be resusable-->
+<div class="text-center card bg-dark border-light m-1 p-1" style="max-width: 18rem; margin-left:50px">
+    <h4 class="font-weight-bold">@Model.Title</h4>
+    <p>Author: @Model.AuthorFirstName @Model.AuthorLastName</p>
+    <p>Publisher: @Model.Publisher</p>
+    <p>Classification: @Model.Classification</p>
+    <p>Category: @Model.Category</p>
+    <p>Book ISBN: @Model.ISBN</p>
+    <p>Price: <span style="color:red">@Model.Price</span></p>
+</div>
+<br />

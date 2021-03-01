@@ -31,12 +31,13 @@ namespace AmazonWebApp.Controllers
         }
 
         //returns view with the repository loaded with seeded books
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
             //allows the page to show only a certain number of entries
             return View(new BookListViewModel
             {
                 Books = _repository.Books
+                .Where(b => category == null || b.Category == category)
                 .OrderBy(b => b.BookId)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize)
@@ -45,8 +46,12 @@ namespace AmazonWebApp.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalNumItems = _repository.Books.Count()
-                }
+                    //adds functionality to change numbering if user chooses a category
+                    //if statement to see what count to take
+                    TotalNumItems = category == null ? _repository.Books.Count() :
+                        _repository.Books.Where(x => x.Category == category).Count()
+                },
+                CurrentCategory = category
             });
         }
 

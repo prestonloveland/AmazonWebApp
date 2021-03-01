@@ -33,7 +33,22 @@ Section 1 Group 11
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+            <img style="width:500px; margin-left:auto; margin-right:auto; display:block;" src="~/amazon.png" />
+
+            <div class="text-center font-weight-bolder">
+                <h1 class="display-4">Welcome to Amazon!</h1>
+                <p class="font-italic">Where we have all the books you can imagine. From A to Z.</p>
+
+            </div>
+            <br /><br />
+                  <div class="col-3">
+                      <vc:navigation-menu />
+                      <br /><br />
+                  </div>
+                  <div class="col-9">
+                      @RenderBody()
+                  </div>
+
         </main>
     </div>
 

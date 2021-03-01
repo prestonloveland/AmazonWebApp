@@ -62,10 +62,29 @@ namespace AmazonWebApp
 
             app.UseEndpoints(endpoints =>
             {
+                //defining what we want the URL to look like and where we want to send the user when they hit it
                 endpoints.MapControllerRoute(
-               "pagination",
-                "P{page}",
-                new { Controller = "Home", action = "Index" });
+                    "categorypage", //name
+                    "{category}/{page:int}", //pattern
+                    new { Controller = "Home", action = "Index" } //action 
+                    );
+
+                endpoints.MapControllerRoute(
+                    "page",
+                    "{page:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    "category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 }
+                    );
+
+                endpoints.MapControllerRoute(
+                   "pagination",
+                    "P{page}",
+                    new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();
             });
