@@ -1,6 +1,6 @@
 ﻿/*
 Preston Loveland
-Assignment 5
+Assignment 8
 Section 1 Group 11*/
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -52,8 +52,8 @@ namespace AmazonWebApp.Infrastructure
             {
                 TagBuilder tag = new TagBuilder("a");
 
-                PageUrlValues["page"] = i;
-                tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+                PageUrlValues["pageNum"] = i;
+                tag.Attributes["href"] = urlHelper.Action(PageAction, new { pageNum = i });
 
                 if (PageClassesEnabled)
                 {
